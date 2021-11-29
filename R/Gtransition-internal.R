@@ -1,0 +1,79 @@
+.growth_vonB <- function(Linf, lc_av, K){
+  
+  d <- (Linf - lc_av)*(1- exp(-K))
+  
+  return(d)
+}
+
+
+.growth_gompertz <- function(Linf, lc_av, K){
+  
+  d <- (Linf*(lc_av/Linf)^exp(-K))-lc_av
+  
+  return(d)
+}
+
+
+.growth_logistic <- function(Linf, lc_av){
+  
+  dmx <- Linf - lc_av[1]
+  
+  d <- dmx/(1+exp(-log(19)*(lc_av - dmx*0.5)/(dmx*0.05 - dmx*0.5)))
+  
+  return(d)
+}
+
+
+.growth_schnute <- function(lc_av, gm, dl){
+  
+  d <- -lc_av + (lc_av^gm * exp(-dl) + li^gm*(1 - exp(-dl)))^(1/gm)
+  
+  return(d)
+}
+
+
+.gamma <- function(llc, quantiles, delta, beta){
+  
+  aux  <- matrix(data = 0, nrow = llc, ncol = llc)
+  
+  mcdf <- NULL
+  for(j in seq_len(llc)){
+    alpha <- delta/beta
+    aux[, j] <- pgamma(q = quantiles, shape = alpha[j], scale = beta, lower.tail = T)
+    
+    if(j < llc){
+      aux2 <- c(rep(0, j-1), aux[1:(llc - j), j]) 
+    } 
+    
+    if(j == llc){
+      aux2 <- NULL 
+    }
+     
+    mcdf <- cbind(mcdf, aux2)
+  }
+  
+  return(mcdf)
+}
+
+
+.normal <- function(llc, quantiles, delta, sigma){
+  
+  aux  <- matrix(data = 0, nrow = llc, ncol = llc)
+  
+  mcdf <- NULL
+  for(j in seq_len(llc)){
+    aux[, j] <- pnorm(q = quantiles, mean = delta[j], sd = sigma, lower.tail = T)
+    
+    if(j < llc){
+      aux2 <- c(rep(0, j-1), aux[1:(llc - j), j]) 
+    } 
+    
+    if(j == llc){
+      aux2 <- NULL 
+    }
+    
+    mcdf <- cbind(mcdf, aux2)
+  }
+  
+  return(mcdf)
+}

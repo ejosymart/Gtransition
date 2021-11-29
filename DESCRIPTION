@@ -1,0 +1,18 @@
+Package: Gtransition
+Type: Package
+Title: Estimate Transition Growth Matrix
+Version: 1.0.0
+Date: 2021-25-12
+Authors@R: c(person("Arelly", "Ornella Vargas", email = "aornelasv@ipn.mx", role = c("aut", "cre")), person("Josymar", "Torrejon-Magallanes", email = "ejosymart@gmail.com", role = c("aut")))
+Maintainer: Josymar Torrejon-Magallanes <ejosymart@gmail.com>
+Description: Estimate .....
+Depends: R (>= 4.0)
+Imports: grDevices, stats, utils, kableExtra
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr
+License: GPL-2
+LazyData: TRUE
+Encoding: UTF-8
+RoxygenNote: 7.1.1
