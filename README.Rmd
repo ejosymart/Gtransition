@@ -23,15 +23,14 @@ This package allows to...
 
 Install the CRAN version:
 
-```R
-install.packages("Gtransition")
-```
+
+
+Or install de development version:
+
 
 
 After, that call the package:
-```R
-library("Gtransition")
-```
+
 
 
 ## Examples

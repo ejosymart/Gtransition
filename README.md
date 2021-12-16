@@ -6,15 +6,9 @@
 
 Install the CRAN version:
 
-``` r
-install.packages("Gtransition")
-```
+Or install de development version:
 
 After, that call the package:
-
-``` r
-library("Gtransition")
-```
 
 ## Examples
 
