@@ -5,14 +5,12 @@
   return(d)
 }
 
-
 .growth_gompertz <- function(Linf, lc_av, K){
   
   d <- (Linf*(lc_av/Linf)^exp(-K))-lc_av
   
   return(d)
 }
-
 
 .growth_logistic <- function(Linf, lc_av){
   
@@ -24,12 +22,13 @@
 }
 
 
-.growth_schnute <- function(lc_av, gm, dl){
+.growth_schnute <- function(lc_av, gm, dl, Linf){
   
-  d <- -lc_av + (lc_av^gm * exp(-dl) + li^gm*(1 - exp(-dl)))^(1/gm)
+  d <- -lc_av + (lc_av^gm * exp(-dl) + Linf^gm*(1 - exp(-dl)))^(1/gm)
   
   return(d)
 }
+
 
 
 .gamma <- function(llc, quantiles, delta, beta){
@@ -48,7 +47,7 @@
     if(j == llc){
       aux2 <- NULL 
     }
-     
+    
     mcdf <- cbind(mcdf, aux2)
   }
   

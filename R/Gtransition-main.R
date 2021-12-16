@@ -9,6 +9,7 @@
 #' @name Gtransition-package
 #' @aliases Gtrasition-package Gtrasition
 #' @docType package
+#' @author Arely Ornella Vargas <aornelasv@@ipn.mx>
 #' @author Josymar Torrejon-Magallanes <ejosymart@@gmail.com>
 #' @details Package: Gtrasition
 #' @details Type: Package
@@ -53,7 +54,7 @@ NULL
 #' output$delta
 #' output$Laverage
 #' @export
-mgi <- function(lowerL, classL, Linf,  K, gm = 1, dl = 0.1, growtheq = "vonB"){
+mgi <- function(lowerL, classL, Linf,  K, gm = 1, dl = 0.1, method = "vonB"){
   
   if(lowerL >= Linf)
     stop("HEY! 'Linf' must be greather than 'lowerL'")
@@ -68,8 +69,8 @@ mgi <- function(lowerL, classL, Linf,  K, gm = 1, dl = 0.1, growtheq = "vonB"){
                      vonB     = .growth_vonB(Linf = Linf, lc_av = lc_av, K = K),
                      Gompertz = .growth_gompertz(Linf = Linf, lc_av = lc_av, K = K),
                      Logistic = .growth_logistic(Linf = Linf, lc_av = lc_av),
-                     Schnute  = .growth_schnute(lc_av = lc_av, gm = gm, dl = dl))
-
+                     Schnute  = .growth_schnute(lc_av = lc_av, gm = gm, dl = dl, Linf = Linf))
+  
   output <- list(delta    = estimate,
                  Laverage = lc_av)
   
@@ -106,7 +107,7 @@ mgi <- function(lowerL, classL, Linf,  K, gm = 1, dl = 0.1, growtheq = "vonB"){
 #' delta <- output$delta
 #' 
 #' mat <- transitionM(lowerL = 10, classL = 10, Linf = 60, distribution = "gamma", 
-#' delta = vonb$delta, beta = 1.5, sigma = NULL)
+#' delta = delta, beta = 1.5, sigma = NULL)
 #' 
 #' mat
 #' @export
