@@ -1,7 +1,6 @@
 # Gtransition
 
-**Estimate Natural Mortality (M) throughout the life history of
-species** This package allows to…
+**Estimate growth trastion matrix** This package allows to…
 
 ## Installation
 
@@ -20,7 +19,7 @@ library("Gtransition")
 ## Examples
 
 This is a basic example which shows you how to calculate the transition
-growth matrix natural:
+growth matrix:
 
 ## Mean growth increment (based on von Bertalanffy equation)
 
