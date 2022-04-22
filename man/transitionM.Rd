@@ -6,8 +6,8 @@
 \usage{
 transitionM(
   lowerL,
+  upperL,
   classL,
-  Linf,
   distribution = "gamma",
   delta,
   beta = NULL,
@@ -17,9 +17,9 @@ transitionM(
 \arguments{
 \item{lowerL}{a numeric value that represents...}
 
-\item{classL}{a numeric value ...}
+\item{upperL}{a numeric value that represents...}
 
-\item{Linf}{a numeric value ....}
+\item{classL}{a numeric value ...}
 
 \item{distribution}{a character string defining the growth equation to be used.}
 
@@ -43,11 +43,11 @@ Estimate .....
 Estimate .....
 }
 \examples{
-output <- mgi(lowerL = 10, classL = 10, Linf = 60, K = 0.3, method = "vonB")
+output <- mgi(lowerL = 78, upperL = 202, classL = 4, Linf = 197.42, K = 0.1938, method = "vonB")
 delta <- output$delta
 
-mat <- transitionM(lowerL = 10, classL = 10, Linf = 60, distribution = "gamma", 
-delta = delta, beta = 1.5, sigma = NULL)
+mat <- transitionM(lowerL = 78, upperL = 202, classL = 4, distribution = "gamma", 
+delta = delta, beta = 0.105, sigma = NULL)
 
 mat
 }

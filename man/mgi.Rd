@@ -4,10 +4,12 @@
 \alias{mgi}
 \title{Mean growth increment}
 \usage{
-mgi(lowerL, classL, Linf, K, gm = 1, dl = 0.1, method = "vonB")
+mgi(lowerL, upperL, classL, Linf, K, gm = 1, dl = 0.1, method = "vonB")
 }
 \arguments{
 \item{lowerL}{a numeric value that represents...}
+
+\item{upperL}{a numeric value that represents...}
 
 \item{classL}{a numeric value ...}
 
@@ -17,7 +19,7 @@ mgi(lowerL, classL, Linf, K, gm = 1, dl = 0.1, method = "vonB")
 
 \item{gm}{a numeric value .. \code{gm = 1} as default value??.}
 
-\item{dl}{a numeric value ...  \code{dl = 0.2} as default value??.}
+\item{dl}{a numeric value ...  \code{dl = 0.1} as default value??.}
 
 \item{method}{a character string defining the growth equation to be used.}
 }
@@ -35,7 +37,7 @@ Estimate mean growth increment, for the individuals in length class I is then th
 Estimate mean growth increment
 }
 \examples{
-output <- mgi(lowerL = 10, classL = 10, Linf = 60, K = 0.3, method = "vonB")
+output <- mgi(lowerL = 78, upperL = 202, classL = 4, Linf = 197.42, K = 0.1938, method = "vonB")
 
 output
 output$delta

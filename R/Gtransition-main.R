@@ -36,7 +36,7 @@ NULL
 #' @param Linf a numeric value ....
 #' @param K a numeric value ..
 #' @param gm a numeric value .. \code{gm = 1} as default value??.
-#' @param dl a numeric value ...  \code{dl = 0.2} as default value??.
+#' @param dl a numeric value ...  \code{dl = 0.1} as default value??.
 #' @param method a character string defining the growth equation to be used.
 #' @return A list of class 'Gincrement'.
 #'
@@ -66,7 +66,7 @@ mgi <- function(lowerL, upperL, classL, Linf,  K, gm = 1, dl = 0.1, method = "vo
   if(classL > Linf)
     stop("HEY! 'classL' must be lower than 'Linf'")
   
-  l_x   <- seq(from = lowerL, to = upperL , by = classL)
+  l_x   <- seq(from = lowerL, to = upperL, by = classL)
   lc_av <- (l_x + classL/2)[-length(l_x)]
   
   estimate <- switch(method,
