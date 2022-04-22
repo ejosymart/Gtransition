@@ -31,6 +31,7 @@ NULL
 #'
 #' Estimate mean growth increment, for the individuals in length class I is then the average change in length of individuals initially in length class
 #' @param lowerL a numeric value that represents...
+#' @param upperL a numeric value that represents...
 #' @param classL a numeric value ...
 #' @param Linf a numeric value ....
 #' @param K a numeric value ..
@@ -48,21 +49,24 @@ NULL
 #'
 #' @references Sullivan P.J., Lai H., Galluci V.F. (1990). A Catch-at-Length analysis that incorporates a stochastic model of growth. Can. J. Fish. Aquat. Sci. 47: 184-198.
 #' @examples
-#' output <- mgi(lowerL = 10, classL = 10, Linf = 60, K = 0.3, method = "vonB")
+#' output <- mgi(lowerL = 78, upperL = 202, classL = 4, Linf = 197.42, K = 0.1938, method = "vonB")
 #'
 #' output
 #' output$delta
 #' output$Laverage
 #' @export
-mgi <- function(lowerL, classL, Linf,  K, gm = 1, dl = 0.1, method = "vonB"){
+mgi <- function(lowerL, upperL, classL, Linf,  K, gm = 1, dl = 0.1, method = "vonB"){
   
   if(lowerL >= Linf)
     stop("HEY! 'Linf' must be greather than 'lowerL'")
   
+  if(lowerL >= upperL)
+    stop("HEY! 'upperL' must be greather than 'lowerL'")
+  
   if(classL > Linf)
     stop("HEY! 'classL' must be lower than 'Linf'")
   
-  l_x   <- seq(from = lowerL, to = Linf , by = classL)
+  l_x   <- seq(from = lowerL, to = upperL , by = classL)
   lc_av <- (l_x + classL/2)[-length(l_x)]
   
   estimate <- switch(method,
@@ -86,8 +90,8 @@ mgi <- function(lowerL, classL, Linf,  K, gm = 1, dl = 0.1, method = "vonB"){
 #'
 #' Estimate .....
 #' @param lowerL a numeric value that represents...
+#' @param upperL a numeric value that represents...
 #' @param classL a numeric value ...
-#' @param Linf a numeric value ....
 #' @param distribution a character string defining the growth equation to be used.
 #' @param delta a numeric vector...
 #' @param beta a numeric value...
@@ -103,35 +107,30 @@ mgi <- function(lowerL, classL, Linf,  K, gm = 1, dl = 0.1, method = "vonB"){
 #'
 #' @references Sullivan P.J., Lai H., Galluci V.F. (1990). A Catch-at-Length analysis that incorporates a stochastic model of growth. Can. J. Fish. Aquat. Sci. 47: 184-198.
 #' @examples
-#' output <- mgi(lowerL = 10, classL = 10, Linf = 60, K = 0.3, method = "vonB")
+#' output <- mgi(lowerL = 78, upperL = 202, classL = 4, Linf = 197.42, K = 0.1938, method = "vonB")
 #' delta <- output$delta
 #' 
-#' mat <- transitionM(lowerL = 10, classL = 10, Linf = 60, distribution = "gamma", 
-#' delta = delta, beta = 1.5, sigma = NULL)
+#' mat <- transitionM(lowerL = 78, upperL = 202, classL = 4, distribution = "gamma", 
+#' delta = delta, beta = 0.105, sigma = NULL)
 #' 
 #' mat
 #' @export
-transitionM <- function(lowerL, classL, Linf, distribution = "gamma", 
+transitionM <- function(lowerL, upperL, classL, distribution = "gamma", 
                         delta, beta = NULL, sigma = NULL){
   
-  if(lowerL >= Linf)
-    stop("HEY! 'Linf' must be greather than 'lowerL'")
+  if(lowerL >= upperL)
+    stop("HEY! 'upperL' must be greather than 'lowerL'")
   
-  if(classL > Linf)
-    stop("HEY! 'classL' must be lower than 'Linf'")
-  
-  l_x       <- seq(from = lowerL, to = Linf, by = classL)
+  l_x       <- seq(from = lowerL, to = upperL, by = classL)
   lc_av     <- (l_x + classL/2)[-length(l_x)]
-  llc       <- length(l_x)
-  quantiles <- c(1, l_x+1)
-  quantiles <- quantiles[-(length(l_x) + 1)]
-  aux       <- matrix(data = 0, nrow = llc, ncol = llc)
+  llc       <- length(lc_av)
+  aux       <- matrix(data = 0L, nrow = llc, ncol = llc)
   G         <- NULL
   
   # mcdf --------------------------------------------------------------------
   mcdf <- switch(distribution,
-                 gamma  = .gamma(llc = llc, quantiles = quantiles, delta = delta, beta = beta),
-                 normal = .normal(llc = llc, quantiles = quantiles, delta = delta, sigma = sigma))
+                 gamma  = .gamma(llc = llc, lc_av = lc_av, delta = delta, beta = beta),
+                 normal = .normal(llc = llc, lc_av = lc_av, delta = delta, sigma = sigma))
   
   rownames(mcdf) <- colnames(mcdf) <- lc_av
   
@@ -150,6 +149,8 @@ transitionM <- function(lowerL, classL, Linf, distribution = "gamma",
   out <- list(mcdf = mcdf, G = G)
   
   output <- lapply(out, function(x) round(x, 6))
+  
+  class(output)  <- c("mtransition", class(output))
   
   return(output)
 }

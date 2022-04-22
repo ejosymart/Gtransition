@@ -31,48 +31,40 @@
 
 
 
-.gamma <- function(llc, quantiles, delta, beta){
+.gamma <- function(llc, lc_av, delta, beta){
   
-  aux  <- matrix(data = 0, nrow = llc, ncol = llc)
+  aux  <- matrix(data = 0L, nrow = llc, ncol = llc)
   
   mcdf <- NULL
   for(j in seq_len(llc)){
-    alpha <- delta/beta
-    aux[, j] <- pgamma(q = quantiles, shape = alpha[j], scale = beta, lower.tail = T)
-    
-    if(j < llc){
-      aux2 <- c(rep(0, j-1), aux[1:(llc - j), j]) 
-    } 
-    
-    if(j == llc){
-      aux2 <- NULL 
-    }
-    
-    mcdf <- cbind(mcdf, aux2)
+    alpha <- (delta + lc_av)/beta
+    aux[, j] <- pgamma(q = lc_av, shape = alpha[j], scale = beta, lower.tail = T)
+
+    mcdf <- cbind(mcdf, aux)
   }
+  
+  mcdf[upper.tri(mcdf)] <- 0
+  
+  rownames(mcdf) <- colnames(mcdf) <-lc_av
   
   return(mcdf)
 }
 
 
-.normal <- function(llc, quantiles, delta, sigma){
+.normal <- function(llc, lc_av, delta, sigma){
   
-  aux  <- matrix(data = 0, nrow = llc, ncol = llc)
+  aux  <- matrix(data = 0L, nrow = llc, ncol = llc)
   
   mcdf <- NULL
   for(j in seq_len(llc)){
-    aux[, j] <- pnorm(q = quantiles, mean = delta[j], sd = sigma, lower.tail = T)
+    aux[, j] <- pnorm(q = lc_av, mean = delta[j], sd = sigma, lower.tail = T)
     
-    if(j < llc){
-      aux2 <- c(rep(0, j-1), aux[1:(llc - j), j]) 
-    } 
-    
-    if(j == llc){
-      aux2 <- NULL 
-    }
-    
-    mcdf <- cbind(mcdf, aux2)
+    mcdf <- cbind(mcdf, aux)
   }
+  
+  mcdf[upper.tri(mcdf)] <- 0
+  
+  rownames(mcdf) <- colnames(mcdf) <-lc_av
   
   return(mcdf)
 }
