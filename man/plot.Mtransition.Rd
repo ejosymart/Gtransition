@@ -11,6 +11,7 @@
   col = "grey45",
   sizeAxis1 = 0.85,
   sizeAxis2 = 0.5,
+  adjY = -15.5,
   ...
 )
 }

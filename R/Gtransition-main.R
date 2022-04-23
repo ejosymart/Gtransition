@@ -175,7 +175,7 @@ transitionM <- function(lowerL, upperL, classL, distribution = "gamma",
 #' @export
 #' @method plot Mtransition
 plot.Mtransition <- function(x, xlab = "X-Text", ylab = "Y-Text", col = "grey45", 
-                             sizeAxis1 = 0.85, sizeAxis2 = 0.5, ...){
+                             sizeAxis1 = 0.85, sizeAxis2 = 0.5, adjY = -15.5, ...){
   
   if (!inherits(x, "Mtransition"))
     stop("Use only with 'Mtransition' objects")
@@ -188,18 +188,7 @@ plot.Mtransition <- function(x, xlab = "X-Text", ylab = "Y-Text", col = "grey45"
       mai   = c(0.05, 0.4, 0.05, 0.2), 
       oma   = c(4, 3, 0, 4)) 
   
-  
-  barplot(data[,ncol(data)], names.arg = rownames(data), 
-          ylim = c(0, 1.1*max(data)), 
-          las = 1, 
-          space = 0, 
-          border = NA, 
-          col = col, 
-          xaxt = "n", 
-          yaxt = "n")
-  box()
-  axis(side = 2, at = c(0, 0.5), las = 2, cex.axis = sizeAxis1)
-  for(i in rev(seq_len(ncol(data)-1))){
+  for(i in rev(seq_len(ncol(data)))){
     barplot(data[,i], names.arg = rownames(data), 
             ylim = c(0, 1.1*max(data)), 
             las = 1, 
@@ -215,7 +204,7 @@ plot.Mtransition <- function(x, xlab = "X-Text", ylab = "Y-Text", col = "grey45"
        labels = rownames(data), las = 2, 
        cex.axis = sizeAxis1)
   mtext(text = xlab, side = 1, line = 2.75)
-  mtext(text = ylab, side = 2, line = 2.75, adj = -ncol(data)/2)
+  mtext(text = ylab, side = 2, line = 2.75, adj = adjY)
   
   
   return(invisible(NULL))

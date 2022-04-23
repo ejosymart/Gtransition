@@ -43,10 +43,18 @@ Laverage <- output$Laverage
 ## Transition growth matrix
 
 ``` r
-mat <- transitionM(lowerL = 78, upperL = 202, classL = 4, 
+Gmat <- transitionM(lowerL = 78, upperL = 202, classL = 4, 
                    distribution = "gamma", 
                    delta = delta, beta = 0.105, sigma = NULL)
 ```
+
+## Transition growth matrix
+
+``` r
+plot(Gmat)
+```
+
+![](README-unnamed-chunk-4-1.png)<!-- -->
 
 ### References
 
