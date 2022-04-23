@@ -2,6 +2,7 @@
 
 #' @importFrom stats pnorm pgamma
 #' @importFrom utils installed.packages
+#' @importFrom graphics axis barplot box mtext par
 #' 
 #' @title Título de lo que hace.
 #'
@@ -160,8 +161,9 @@ transitionM <- function(lowerL, upperL, classL, distribution = "gamma",
 #' @param x object of class 'Mtransition'.
 #' @param xlab a title for the x axis.
 #' @param ylab a title for the y axis.
-#' @param sizeAxis1 a number for the size x label.
-#' @param sizeAxis2 a number for the size y label.
+#' @param sizeAxis1 a number for the axis X.
+#' @param sizeAxis2 a number for the axis Y.
+#' @param adjY a number for y label position 
 #' @param col color for the barplot.
 #' @param \dots Additional arguments to the plot method.
 #' @examples

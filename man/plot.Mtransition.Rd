@@ -24,9 +24,11 @@
 
 \item{col}{color for the barplot.}
 
-\item{sizeAxis1}{a number for the size x label.}
+\item{sizeAxis1}{a number for the axis X.}
 
-\item{sizeAxis2}{a number for the size y label.}
+\item{sizeAxis2}{a number for the axis Y.}
+
+\item{adjY}{a number for y label position}
 
 \item{\dots}{Additional arguments to the plot method.}
 }
