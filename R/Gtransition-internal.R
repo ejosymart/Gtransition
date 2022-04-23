@@ -47,8 +47,6 @@
   for(j in seq_len(llc)){
     alpha <- (delta + lc_av)/beta
     aux[, j] <- pgamma(q = lc_av, shape = alpha[j], scale = beta, lower.tail = T)
-
-    # mcdf <- cbind(mcdf, aux)
   }
   
   mcdf <- aux
@@ -68,8 +66,6 @@
   mcdf <- NULL
   for(j in seq_len(llc)){
     aux[, j] <- pnorm(q = lc_av, mean = delta[j], sd = sigma, lower.tail = T)
-    
-    # mcdf <- cbind(mcdf, aux)
   }
   
   mcdf <- aux

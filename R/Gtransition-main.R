@@ -96,7 +96,7 @@ mgi <- function(lowerL, upperL, classL, Linf,  K, gm = 1, dl = 0.1, method = "vo
 #' @param delta a numeric vector...
 #' @param beta a numeric value...
 #' @param sigma a numeric value...
-#' @return A list of class 'mtransition'.
+#' @return A list of class 'Mtransition'.
 #'
 #' \code{mcdf} the mean growth increment
 #'
@@ -146,11 +146,77 @@ transitionM <- function(lowerL, upperL, classL, distribution = "gamma",
   G <- rbind(rep(0, ncol(G)), G)
   rownames(G) <- colnames(G) <- lc_av
   
-  out <- list(mcdf = mcdf, G = G)
+  output <- G
   
-  output <- lapply(out, function(x) round(x, 6))
-  
-  class(output)  <- c("mtransition", class(output))
+  class(output)  <- c("Mtransition", class(output))
   
   return(output)
+}
+
+
+
+#' Plot method for Mtransition class
+#'
+#' @param x object of class 'Mtransition'.
+#' @param xlab a title for the x axis.
+#' @param ylab a title for the y axis.
+#' @param sizeAxis1 a number for the size x label.
+#' @param sizeAxis2 a number for the size y label.
+#' @param col color for the barplot.
+#' @param \dots Additional arguments to the plot method.
+#' @examples
+#' output <- mgi(lowerL = 78, upperL = 202, classL = 4, Linf = 197.42, K = 0.1938, method = "vonB")
+#' delta <- output$delta
+#' 
+#' mat <- transitionM(lowerL = 78, upperL = 202, classL = 4, distribution = "gamma", 
+#' delta = delta, beta = 0.105, sigma = NULL)
+#' 
+#' plot(mat)
+#' @export
+#' @method plot Mtransition
+plot.Mtransition <- function(x, xlab = "X-Text", ylab = "Y-Text", col = "grey45", 
+                             sizeAxis1 = 0.85, sizeAxis2 = 0.5, ...){
+  
+  if (!inherits(x, "Mtransition"))
+    stop("Use only with 'Mtransition' objects")
+  
+  data     <- x
+  
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar))
+  par(mfrow = c(ncol(data), 1), 
+      mai   = c(0.05, 0.4, 0.05, 0.2), 
+      oma   = c(4, 3, 0, 4)) 
+  
+  
+  barplot(data[,ncol(data)], names.arg = rownames(data), 
+          ylim = c(0, 1.1*max(data)), 
+          las = 1, 
+          space = 0, 
+          border = NA, 
+          col = col, 
+          xaxt = "n", 
+          yaxt = "n")
+  box()
+  axis(side = 2, at = c(0, 0.5), las = 2, cex.axis = sizeAxis)
+  for(i in rev(seq_len(ncol(data)-1))){
+    barplot(data[,i], names.arg = rownames(data), 
+            ylim = c(0, 1.1*max(data)), 
+            las = 1, 
+            space = 0, 
+            border = NA, 
+            col = col, 
+            xaxt = "n", 
+            yaxt = "n")
+    box()
+    axis(side = 2, at = c(0, 0.5), las = 2, cex.axis = sizeAxis)
+  }
+  axis(side = 1, at = seq_along(rownames(data)), 
+       labels = rownames(data), las = 2, 
+       cex.axis = sizeAxis)
+  mtext(text = xlab, side = 1, line = 2.75)
+  mtext(text = ylab, side = 2, line = 2.75, adj = -ncol(data)/2)
+  
+  
+  return(invisible(NULL))
 }

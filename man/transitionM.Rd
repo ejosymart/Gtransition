@@ -30,7 +30,7 @@ transitionM(
 \item{sigma}{a numeric value...}
 }
 \value{
-A list of class 'mtransition'.
+A list of class 'Mtransition'.
 
 \code{mcdf} the mean growth increment
 
