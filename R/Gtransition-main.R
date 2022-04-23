@@ -198,7 +198,7 @@ plot.Mtransition <- function(x, xlab = "X-Text", ylab = "Y-Text", col = "grey45"
           xaxt = "n", 
           yaxt = "n")
   box()
-  axis(side = 2, at = c(0, 0.5), las = 2, cex.axis = sizeAxis)
+  axis(side = 2, at = c(0, 0.5), las = 2, cex.axis = sizeAxis1)
   for(i in rev(seq_len(ncol(data)-1))){
     barplot(data[,i], names.arg = rownames(data), 
             ylim = c(0, 1.1*max(data)), 
@@ -209,11 +209,11 @@ plot.Mtransition <- function(x, xlab = "X-Text", ylab = "Y-Text", col = "grey45"
             xaxt = "n", 
             yaxt = "n")
     box()
-    axis(side = 2, at = c(0, 0.5), las = 2, cex.axis = sizeAxis)
+    axis(side = 2, at = c(0, 0.5), las = 2, cex.axis = sizeAxis2)
   }
   axis(side = 1, at = seq_along(rownames(data)), 
        labels = rownames(data), las = 2, 
-       cex.axis = sizeAxis)
+       cex.axis = sizeAxis1)
   mtext(text = xlab, side = 1, line = 2.75)
   mtext(text = ylab, side = 2, line = 2.75, adj = -ncol(data)/2)
   
