@@ -56,15 +56,49 @@
 #' \eqn{L_{95}} is the initial length at 0.05 times Max\Delta_{l} (LGS). Te equation LGS uses \eqn{-LN(19)}, thus expressing a Logistic curve; if LN(19) is used then an inverse 
 #' logistic curve could be modeled (Baker et al., 1991; Haddon et al., 2008; Helidoniotis et al., 2011).
 #' 
+#' To describe the variability in the mean growth increments, the \eqn{G_{l, l+1}} matrix was based on two probabilistic density functions: gamma and normal distributions. 
+#' Both functions define the probability region where individuals may grow, including the probability that the increment in length does not occur and the individuals remain 
+#' in their original length class (Haddon, 2011). Thus, the probabilities of growth increments were estimated:
 #' 
-#' @references Luquin-Covarrubias M., Morales-Bojorquez E. (2020). Effects of stochastic growth on population dynamics and management quantities estimated from an integrated catch-at-length assessment model: Panopea globosa as case study. Ecologial Modeling 440, 109384. https://doi.org/10.1016/j.ecolmodel.2020.109384
-#' @references Sullivan P.J., Lai H., Galluci V.F. (1990). A Catch-at-Length analysis that incorporates a stochastic model of growth. Can. J. Fish. Aquat. Sci. 47: 184-198.
+#' a) Assuming a gamma distribution
+#' 
+#' \deqn{g(\Delta_{l}|\alpha_{l}\beta_{g}) = \frac{1}{\beta^{\alpha_{l}}_{g} \cdot \Gamma(\alpha_{l})} \Delta_{l}^{\alpha_{l}-1} \cdot e^{-\frac{\Delta_{l}}{\beta_{g}}}}
+#' 
+#' where \eqn{\alpha_{l}} is the scale parameter, \eqn{\beta_{g}} is the shape parameter and \eqn{\Gamma} is the gamma funtion for the eqn{\alpha_{l}} parameter.
+#' The mean change in length is \eqn{\Delta_{l} = \alpha_{l} \cdot \beta_{g}} and the variance is \eqn{\sigma_{\Gamma}^{2} = \alpha_{l} \cdot \beta_{g}^{2}}.
+#' The expected proportion of individuals growing from length class \eqn{l} to length class \eqn{l + 1} can be found by integrating over the length range 
+#' \eqn{l + 1_{1}, l + 1_{2}} which represent the lower and upper ends of length classes, respectively (Quinn & Deriso, 1999; Haddon, 2011):
+#' 
+#' \deqn{G_{l, l+1} = \int_{l+1_{1}}^{l+1_{2}} g(x|\alpha_{1}, \beta_{g}) dx}
+#' 
+#' 
+#' b) Assuming a normal distribution
+#' 
+#' \deqn{ X_{k}= \int_{L_{j}}^{L_{j+1}} \frac{1}{\sigma_{k}\cdot\sqrt{2\pi}} exp(-\frac{(L-(\tilde{L}_{i} + I_{k}))}{2(\sigma_{k})^2}) dL}
+#' 
+#' where \eqn{\sigma_{k}} determines the variability in growth increment for individuals k, \eqn{\tilde{L}_{i}} is the midpoint of the length class \eqn{i},
+#' \eqn{I_{k}} is the growth increment. The normal distribution defines the probability that an individual in length class \eqn{i} grows into size class \eqn{j}
+#' during each time-step (Haddon 2011).
+#' 
+#' @references Baker, T.T., Lafferty, R., Quinn II, T.J., 1991. A general growth model for mark-recapture data. Fisheries Research. 11(3-4), 257-281. https://doi.org/10.1016/0165-7836(91)90005-Z.
+#' @references Cao, J., Chen, Y., Richards, R.A., 2017a. Improving assessment of Pandalus stocks using a seasonal, size-structured assessment model with environmental variables. Part I: Model description and application. Canadian Journal of Fisheries and Aquatic Sciences, 74(3), 349-362. https://doi.org/10.1139/cjfas-2016-0020.
+#' @references Dippold, D.A., Leaf, R.T., Franks, J.S., Hendon, J.R., 2017. Growth, mortality, and movement of cobia (\eqn{Rachycentron canadum}). Fishery Bulletin, 115(4). doi: 10.7755/FB.115.4.3
+#' @references Fisch, N.C., Bence, J.R., Myers, J.T., Berglund, E.K., Yule, D.L., 2019. A comparison of age-and size-structured assessment models applied to a stock of cisco in Thunder Bay, Ontario. Fisheries Research, 209, 86-100. https://doi.org/10.1016/j.fishres.2018.09.014.
+#' @references Haddon, M., Mundy, C., Tarbath, D., 2008. Using an inverse-logistic model to describe growth increments of blacklip abalone (Haliotis rubra) in Tasmania. Fishery Bulletin, 106(1), 58-71.
+#' @references Haddon, M., 2011. Modelling and quantitative methods in fisheries. CRC press. Second ed. Boca Raton, London, New York.
+#' @references Helidoniotis, F., Haddon, M., Tuck, G., Tarbath, D., 2011. The relative suitability of the von Bertalanffy, Gompertz and inverse logistic models for describing growth in blacklip abalone populations (Haliotis rubra) in Tasmania, Australia. Fisheries Research, 112(1-2), 13-21. https://doi.org/10.1016/j.fishres.2011.08.005.
+#' @references Helidoniotis, F., Haddon, M., 2013. Growth models for fisheries: The effect of unbalanced sampling error on model selection, parameter estimation, and biological predictions. Journal of Shellfish Research, 32(1), 223-236. https://doi.org/10.2983/035.032.0129.
+#' @references Schnute, J., 1981. A versatile growth model with statistically stable parameters. Canadian Journal of Fisheries and Aquatic Sciences, 38(9), 1128-1140. https://doi.org/10.1139/f81-153.
+#' @references Sullivan, P.J., Lai, H.L., Gallucci, V.F., 1990. A catch-at-length analysis that incorporates a stochastic model of growth. Canadian Journal of Fisheries and Aquatic Sciences, 47(1), 184-198. https://doi.org/10.1139/f90-021.
+#' @references Punt, A.E., Deng, R.A., Dichmont, C.M., Kompas, T., Venables,W.N., Zhou, S., Pascoe, S., Hutton, T., Kenyon, R., van der Velde, T., Kienzle, M., 2010. Integrating size-structured assessment and bioeconomic management advice in Australia's northern prawn fishery. ICES Journal of Marine Science, 67(8), 1785-1801. https://doi.org/10.1093/icesjms/fsq037.
+#' @references Quinn II, T.J., Deriso, R.B., 1999. Quantitative fish dynamics. First ed. New York, Oxford.
+#' @references Troynikov, V.S., Day, R.W., Leorke, A.M., 1998. Estimation of seasonal growth parameters using a stochastic Gompertz model for tagging data. Journal of Shellfish Research, 17, 833-838.
 #' @concept Gtransition
 #' @concept growth
 #' @concept transition
-#' @concept distributions
+#' @concept distribution
 #' @examples
-#' #See examples for functions.
+#' #See examples for functions mgi() and transitionM.
 
 NULL
 #' Mean growth increment
