@@ -1,22 +1,29 @@
-# Gtransition package: Descripcion corta de lo que hace --------
+# Gtransition package: Estimate a Stochastic Growth Matrix Based on Length Structure data
 
 #' @importFrom stats pnorm pgamma
 #' @importFrom utils installed.packages
 #' @importFrom graphics axis barplot box mtext par
 #' 
-#' @title Título de lo que hace.
+#' @title Estimate a stochastic growth matrix based on length structure data
 #'
-#' @description Decsripcion de lo que hace
+#' @description Describe a theoretical model expressing the variability observed in the individual growth, such that each individual in the population exhibits a growth pattern with a nonlinear trend toward an expected value.
 #' @name Gtransition-package
-#' @aliases Gtrasition-package Gtrasition
+#' @aliases Gtransition-package Gtransition
 #' @docType package
-#' @author Arely Ornella Vargas <aornelasv@@ipn.mx>
+#' @author Arelly Ornelas Vargas <aornelasv@@ipn.mx>
 #' @author Josymar Torrejon-Magallanes <ejosymart@@gmail.com>
+#' @author Marlene Anaid Luquin-Covarrubias <marlene.luquin@@gmail.com>
 #' @details Package: Gtrasition
 #' @details Type: Package
-#' @details Detalles de lo que hace.
+#' @details The stochastic growth matrix describes a theoretical model expressing the variability observed in the individual growth, such that each individual in the population exhibits a growth pattern with a nonlinear trend toward an expected value.
+#' Thus, the growth is represented by the proportion of individuals in the length class \eqn{l} during a time interval. The proportion of individuals that grow from length class \eqn{l} to all length classes \eqn{l^{'}} is represented by a probabilistic density function, usually gamma distribution or normal distribution; therefore, the growth pattern depends on their parameters, where the mean value indicates the average growth increment, and the variance explains the individual variability in growth, consequently both parameters determine the proportion of individuals going from one length class to another.
 #'
-#' In the Gtrasition... 
+#' 1) Stochastic growth matrix
+#' Individual growth was modeled by using a growth matrix (\eqn{G_{l, l+1}}) which is expressed through a stochastic growth model that defines the probability of each individual growing from one length class to another over a time-step.
+#' Mathematically \eqn{G_{l, l+1}} matriz requires estimation of mean growth increments \eqn{\delta_{l}}, which assume length variability from individual to individual estimated by \deqn{\delta_{l} = l_{t+1} - l_{t}}, where \eqn{l_{t+1}} is the length of the individual at time \eqn{t + 1}, and \eqn{l_{t}} is the length of the individual at time \eqn{t}.
+#' In this way, The expected mean growth increments were estimated by applying four stochastic growth models.
+#' 
+#' 1.1) 
 #'
 #' @references Luquin-Covarrubias M., Morales-Bojorquez E. (2020). Effects of stochastic growth on population dynamics and management quantities estimated from an integrated catch-at-length assessment model: Panopea globosa as case study. Ecologial Modeling 440, 109384. https://doi.org/10.1016/j.ecolmodel.2020.109384
 #' @references Sullivan P.J., Lai H., Galluci V.F. (1990). A Catch-at-Length analysis that incorporates a stochastic model of growth. Can. J. Fish. Aquat. Sci. 47: 184-198.
