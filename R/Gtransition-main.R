@@ -23,8 +23,40 @@
 #' Mathematically \eqn{G_{l, l+1}} matriz requires estimation of mean growth increments \eqn{\delta_{l}}, which assume length variability from individual to individual estimated by \deqn{\delta_{l} = l_{t+1} - l_{t}}, where \eqn{l_{t+1}} is the length of the individual at time \eqn{t + 1}, and \eqn{l_{t}} is the length of the individual at time \eqn{t}.
 #' In this way, The expected mean growth increments were estimated by applying four stochastic growth models.
 #' 
-#' 1.1) 
-#'
+#' 1.1) von Bertalanfy stochastic growth model
+#' The von Bertalanffy stochastic growth model (VBS) defines an asymptotic curve characterized by an accelerated growth rate in the early stages of development that decreases gradually to attain the asymptotic length (Sullivan et al., 1990; Punt et al., 2010; Cao et al., 2017a; Fisch et al., 2019).
+#' 
+#' \deqn{\bar{\Delta}_{l} = (L_{\infty} - l_{\ast}) \cdot (1 - e^{-K})}
+#' 
+#' 
+#' 1.2) Gompertz stochastic growth model
+#' The re-parameterized Gompertz stochastic growth model (GMS) exhibits an asymmetrical sigmoidal curve with a low inflection point and assumes that growth is not constant throughout the life cycle; thus, younger individuals exhibit faster growth than older individuals (Troynikov et al., 1998; Helidoniotis & Haddon, 2013; Dippold et al., 2017).
+#' 
+#' \deqn{\bar{\Delta}_{l} = L_{\infty} \cdot \frac{l_{\ast}}{L_{\infty}}^{exp(-K)} - l_{\ast}}
+#' 
+#' 
+#' 1.3) Logistic stochastic growth model
+#' The Logistic stochastic growth model (LGS) describes a symmetrical sigmoidal curve and denotes several growth possibilities, which can be spread to maximum lengths, allowing the description of both determinate and indeterminate growth (Haddon et al., 2008; Helidoniotis et al., 2011).
+#' 
+#' \deqn{\bar{\Delta}_{l} = \frac{Max\Delta_{l}}{1 + exp(-LN(19) \cdot (\frac{(l_{\ast})-L_{50}}{L_{95} - L{50}}))}}
+#' 
+#' 
+#' 1.4) Schnute stochastic growth model
+#' The Schnute stochastic growth matrix (SCS) was used assuming the parameters \eqn{\delta} \eqn{\neq} 0, \eqn{\gamma} \eqn{\neq} 0,
+#' where \eqn{\delta} represents a constant relative rate of relative growth rate, and \eqn{\gamma} is the incremental relative rate of relative growth rate (Schnute, 1981).
+#' SCS SCS is a general growth model with high flexibility describing a variety of growth patterns (asymptotic, linear, and exponential), including properties such as growth acceleration, 
+#' asymptotic limits and inflection points, depending on the parameter values (Baker et al., 1991). According to Schnute (1981), if \eqn{\gamma} = 1,
+#' then the model describes an asymptotic growth pattern that corresponds to the von Bertalanffy shape>
+#' 
+#' \deqn{\bar{\Delta}_{l} = -l_{\ast} + (l^{\gamma}_{\ast} \cdot exp^{-\gamma} + L^{\gamma}_{\infty} \cdot (1 - exp^{-\gamma}))^{\frac{1}{\gamma}}}
+#' 
+#' where \eqn{\bar{\Delta}_{l}} is the expected mean growth increment for length class \eqn{l}, \eqn{l_{\ast}} represents the midlength of the length class \eqn{l},
+#' \eqn{L_{\infty}} is the asymptotic length where the mean growth increment is zero (VBS, GMS and SCS), \eqn{K} represents the growth rate (VBS and GMS), 
+#' Max\Delta_{l} is the maximum growth increment, \eqn{L_{50}} is the initial length that produces a growth increment of 0.5 times Max\Delta_{l}, and
+#' \eqn{L_{95}} is the initial length at 0.05 times Max\Delta_{l} (LGS). Te equation LGS uses \eqn{-LN(19)}, thus expressing a Logistic curve; if LN(19) is used then an inverse 
+#' logistic curve could be modeled (Baker et al., 1991; Haddon et al., 2008; Helidoniotis et al., 2011).
+#' 
+#' 
 #' @references Luquin-Covarrubias M., Morales-Bojorquez E. (2020). Effects of stochastic growth on population dynamics and management quantities estimated from an integrated catch-at-length assessment model: Panopea globosa as case study. Ecologial Modeling 440, 109384. https://doi.org/10.1016/j.ecolmodel.2020.109384
 #' @references Sullivan P.J., Lai H., Galluci V.F. (1990). A Catch-at-Length analysis that incorporates a stochastic model of growth. Can. J. Fish. Aquat. Sci. 47: 184-198.
 #' @concept Gtransition
