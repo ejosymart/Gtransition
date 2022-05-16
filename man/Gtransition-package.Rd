@@ -50,8 +50,8 @@ then the model describes an asymptotic growth pattern that corresponds to the vo
 
 where \eqn{\bar{\Delta}_{l}} is the expected mean growth increment for length class \eqn{l}, \eqn{l_{\ast}} represents the midlength of the length class \eqn{l},
 \eqn{L_{\infty}} is the asymptotic length where the mean growth increment is zero (VBS, GMS and SCS), \eqn{K} represents the growth rate (VBS and GMS), 
-Max\Delta_{l} is the maximum growth increment, \eqn{L_{50}} is the initial length that produces a growth increment of 0.5 times Max\Delta_{l}, and
-\eqn{L_{95}} is the initial length at 0.05 times Max\Delta_{l} (LGS). Te equation LGS uses \eqn{-LN(19)}, thus expressing a Logistic curve; if LN(19) is used then an inverse 
+\eqn{Max\Delta_{l}} is the maximum growth increment, \eqn{L_{50}} is the initial length that produces a growth increment of 0.5 times \eqn{Max\Delta_{l}}, and
+\eqn{L_{95}} is the initial length at 0.05 times \eqn{Max\Delta_{l}} (LGS). Te equation LGS uses \eqn{-LN(19)}, thus expressing a Logistic curve; if LN(19) is used then an inverse 
 logistic curve could be modeled (Baker et al., 1991; Haddon et al., 2008; Helidoniotis et al., 2011).
 
 To describe the variability in the mean growth increments, the \eqn{G_{l, l+1}} matrix was based on two probabilistic density functions: gamma and normal distributions. 
@@ -62,7 +62,7 @@ a) Assuming a gamma distribution
 
 \deqn{g(\Delta_{l}|\alpha_{l}\beta_{g}) = \frac{1}{\beta^{\alpha_{l}}_{g} \cdot \Gamma(\alpha_{l})} \Delta_{l}^{\alpha_{l}-1} \cdot e^{-\frac{\Delta_{l}}{\beta_{g}}}}
 
-where \eqn{\alpha_{l}} is the scale parameter, \eqn{\beta_{g}} is the shape parameter and \eqn{\Gamma} is the gamma funtion for the eqn{\alpha_{l}} parameter.
+where \eqn{\alpha_{l}} is the scale parameter, \eqn{\beta_{g}} is the shape parameter and \eqn{\Gamma} is the gamma funtion for the \eqn{\alpha_{l}} parameter.
 The mean change in length is \eqn{\Delta_{l} = \alpha_{l} \cdot \beta_{g}} and the variance is \eqn{\sigma_{\Gamma}^{2} = \alpha_{l} \cdot \beta_{g}^{2}}.
 The expected proportion of individuals growing from length class \eqn{l} to length class \eqn{l + 1} can be found by integrating over the length range 
 \eqn{l + 1_{1}, l + 1_{2}} which represent the lower and upper ends of length classes, respectively (Quinn & Deriso, 1999; Haddon, 2011):
