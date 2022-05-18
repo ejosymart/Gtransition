@@ -42,7 +42,8 @@ Estimate .....
 \details{
 Estimate .....
 }
-\examples{
+\references{
+Luquin-Covarrubias, M.A. and E. Morales-Bojórquez. 2021. Effects of stochastic growth on population dynamics and management quantities estimated from an integrated catch-at-length assessment model: Panopea globosa as case study. Ecological Modelling. 440: 109384. https://doi.org/10.1016/j.ecolmodel.2020.109384.
 output <- mgi(lowerL = 78, upperL = 202, classL = 4, Linf = 197.42, K = 0.1938, method = "vonB")
 delta <- output$delta
 
@@ -50,7 +51,4 @@ mat <- transitionM(lowerL = 78, upperL = 202, classL = 4, distribution = "gamma"
 delta = delta, beta = 0.105, sigma = NULL)
 
 mat
-}
-\references{
-Sullivan P.J., Lai H., Galluci V.F. (1990). A Catch-at-Length analysis that incorporates a stochastic model of growth. Can. J. Fish. Aquat. Sci. 47: 184-198.
 }
