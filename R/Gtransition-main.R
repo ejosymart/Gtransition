@@ -215,6 +215,7 @@ mgi <- function(lowerL, upperL, classL, Linf,  K, gm = 1, dl = 0.1, method = "vo
 #'
 #'
 #' @references Luquin-Covarrubias, M.A. and E. Morales-Bojórquez. 2021. Effects of stochastic growth on population dynamics and management quantities estimated from an integrated catch-at-length assessment model: Panopea globosa as case study. Ecological Modelling. 440: 109384. https://doi.org/10.1016/j.ecolmodel.2020.109384.
+#' @examples
 #' output <- mgi(lowerL = 78, upperL = 202, classL = 4, Linf = 197.42, K = 0.1938, method = "vonB")
 #' delta <- output$delta
 #' 
