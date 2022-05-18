@@ -23,6 +23,7 @@
 #' depends on their parameters, where the mean value indicates the average growth increment, and the variance explains 
 #' the individual variability in growth, consequently both parameters determine the proportion of individuals going 
 #' from one length class to another.
+#' 
 #'
 #' 1) Stochastic growth matrix
 #' Individual growth was modeled by using a growth matrix (\eqn{G_{l, l+1}}) which is expressed through a stochastic growth model 
@@ -57,7 +58,7 @@
 #' which can be spread to maximum lengths, allowing the description of both determinate and indeterminate growth 
 #' (Haddon et al., 2008; Helidoniotis et al., 2011).
 #' 
-#' \deqn{\bar{\Delta}_{l} = \frac{Max\Delta_{l}}{1 + e^{(-LN(19) \cdot (\frac{l_{\ast}-L_{50}}{L_{95} - L{50}}))}}}
+#' \deqn{\bar{\Delta}_{l} = \frac{Max\Delta_{l}}{1 + e^{\left(-LN(19) \cdot (\frac{l_{\ast}-L_{50}}{L_{95} - L{50}})\right)}}}
 #' 
 #' 
 #' 1.4) Schnute stochastic growth model:
@@ -109,7 +110,7 @@
 #' 
 #' b) Assuming a normal distribution:
 #' 
-#' \deqn{ X_{k}= \int_{L_{j}}^{L_{j+1}} \frac{1}{\sigma_{k}\cdot\sqrt{2\pi}} exp\left(-\frac{(L-(\tilde{L}_{i} + I_{k}))}{2(\sigma_{k})^2}\right) dL}
+#' \deqn{ X_{k}= \int_{L_{j}}^{L_{j+1}} \frac{1}{\sigma_{k}\cdot\sqrt{2\pi}} exp\left(-\frac{L-(\tilde{L}_{i} + I_{k})}{2(\sigma_{k})^2}\right) dL}
 #' 
 #' where \eqn{\sigma_{k}} determines the variability in growth increment for individuals k, \eqn{\tilde{L}_{i}} is the midpoint of the length class \eqn{i},
 #' \eqn{I_{k}} is the growth increment. The normal distribution defines the probability that an individual in length class \eqn{i} grows into size class \eqn{j}
