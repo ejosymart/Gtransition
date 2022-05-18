@@ -15,7 +15,7 @@ library(Gtransition)
 
 # Gtransition
 
-**Estimate growth trastion matrix**
+**Estimate a Stochastic Growth Matrix Based on Length Structure Data**
 This package  describes a theoretical model expressing the variability observed in the individual growth, such that each individual in the population exhibits a growth pattern with a nonlinear trend toward an expected value. Thus, the growth is represented by the proportion of individuals in the length class $l$ during a time interval. The proportion of individuals that grow from length class $l$ to all length classes $l^{'}$ is represented by a probabilistic density function, usually gamma distribution or normal distribution; therefore the growth pattern depends of their parameters, where the mean value indicates the average growth increment, and the variance explains the individual variability in growth, consequently both parameters determine the proportion of individuals going from one length class to another.
 
 

@@ -1,4 +1,4 @@
-# Gtransition package: Estimate a Stochastic Growth Matrix Based on Length Structure data
+# Gtransition package: Estimate a Stochastic Growth Matrix Based on Length Structure Data
 
 #' @importFrom stats pnorm pgamma
 #' @importFrom utils installed.packages
