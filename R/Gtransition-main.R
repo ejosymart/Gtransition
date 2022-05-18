@@ -48,7 +48,7 @@
 #' point and assumes that growth is not constant throughout the life cycle; thus, younger individuals exhibit faster growth 
 #' than older individuals (Troynikov et al., 1998; Helidoniotis & Haddon, 2013; Dippold et al., 2017).
 #' 
-#' \deqn{\bar{\Delta}_{l} = L_{\infty} \cdot (\frac{l_{\ast}}{L_{\infty}})^{exp(-K)} - l_{\ast}}
+#' \deqn{\bar{\Delta}_{l} = L_{\infty} \cdot \left(\frac{l_{\ast}}{L_{\infty}}\right)^{exp(-K)} - l_{\ast}}
 #' 
 #' 
 #' 1.3) Logistic stochastic growth model:
@@ -57,7 +57,7 @@
 #' which can be spread to maximum lengths, allowing the description of both determinate and indeterminate growth 
 #' (Haddon et al., 2008; Helidoniotis et al., 2011).
 #' 
-#' \deqn{\bar{\Delta}_{l} = \frac{Max\Delta_{l}}{1 + e^(-LN(19) \cdot (\frac{l_{\ast}-L_{50}}{L_{95} - L{50}}))}}
+#' \deqn{\bar{\Delta}_{l} = \frac{Max\Delta_{l}}{1 + e^{(-LN(19) \cdot (\frac{l_{\ast}-L_{50}}{L_{95} - L{50}}))}}}
 #' 
 #' 
 #' 1.4) Schnute stochastic growth model:
