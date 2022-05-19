@@ -147,8 +147,8 @@ NULL
 #' Estimate mean growth increment \eqn{\bar \Delta_l} for the individuals in length class \eqn{l}.
 #' @param lowerL a numeric value that represents the smallest observed  size.
 #' @param upperL a numeric value that represents the highest observed size.
-#' @param classL  a numeric value that represents the range length classes.
-#' @param Linf   a numeric value that represents   the theoretical asymptotic length of an individual \eqn{L_\infty}.
+#' @param classL a numeric value that represents the range length classes.
+#' @param Linf a numeric value that represents the theoretical asymptotic length of an individual \eqn{L_\infty}.
 #' @param k a numeric value that represents the growth rate parameter.
 #' @param gm a numeric value that represents the incremental relative rate of relative growth rate. Required when "Schnute" method is selected.
 #' @param dl a numeric value  represents a constant relative rate of relative growth rate. Required when "Schnute" method is selected.

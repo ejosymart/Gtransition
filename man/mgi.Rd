@@ -13,7 +13,7 @@ mgi(lowerL, upperL, classL, Linf, k, gm = 1, dl = 0.1, method = "vonB")
 
 \item{classL}{a numeric value that represents the range length classes.}
 
-\item{Linf}{a numeric value that represents   the theoretical asymptotic length of an individual \eqn{L_\infty}.}
+\item{Linf}{a numeric value that represents the theoretical asymptotic length of an individual \eqn{L_\infty}.}
 
 \item{k}{a numeric value that represents the growth rate parameter.}
 
