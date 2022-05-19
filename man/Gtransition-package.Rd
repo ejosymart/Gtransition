@@ -24,7 +24,7 @@ from one length class to another.
 
 \describe{
 
-\item{Stochastic growth matrix}{}
+\item{Stochastic growth matrix:}{}
 
 Individual growth was modeled by using a growth matrix (\eqn{G_{l, l+1}}) which is expressed through a stochastic growth model 
 that defines the probability of each individual growing from one length class to another over a time-step.
@@ -84,7 +84,7 @@ The equation LGS uses \eqn{-\ln(19)}, thus expressing a logistic curve; if if \e
 logistic curve could be modeled (Baker et al., 1991; Haddon et al., 2008; Helidoniotis et al., 2011).
 }
 
-\item{Variability}{}
+\item{Variability:}{}
 To describe the variability in the mean growth increments, the \eqn{G_{l, l+1}} matrix was based 
 on two probabilistic density functions: gamma and normal distributions. 
 Both functions define the probability region where individuals may grow, including the probability 
@@ -150,7 +150,7 @@ Quinn II, T.J., Deriso, R.B., 1999. Quantitative fish dynamics. First ed. New Yo
 Troynikov, V.S., Day, R.W., Leorke, A.M., 1998. Estimation of seasonal growth parameters using a stochastic Gompertz model for tagging data. Journal of Shellfish Research, 17, 833-838.
 }
 \author{
-Arelly Ornelas Vargas <aornelasv@ipn.mx>
+Arelly Ornelas-Vargas <aornelasv@ipn.mx>
 
 Josymar Torrejon-Magallanes <ejosymart@gmail.com>
 
