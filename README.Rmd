@@ -64,7 +64,7 @@ Gmat <- transitionM(lowerL = 78, upperL = 202, classL = 4,
 
 ```
 
-## Transition growth matrix
+
 ```{r}
 plot(Gmat)
 ```
