@@ -6,7 +6,7 @@
 \usage{
 \method{plot}{Mtransition}(
   x,
-  xlab = "X-Text",
+  xlab = "Length class",
   ylab = "Y-Text",
   col = "grey45",
   sizeAxis1 = 0.85,
