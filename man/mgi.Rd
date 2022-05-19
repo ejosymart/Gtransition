@@ -4,40 +4,40 @@
 \alias{mgi}
 \title{Mean growth increment}
 \usage{
-mgi(lowerL, upperL, classL, Linf, K, gm = 1, dl = 0.1, method = "vonB")
+mgi(lowerL, upperL, classL, Linf, k, gm = 1, dl = 0.1, method = "vonB")
 }
 \arguments{
-\item{lowerL}{a numeric value that represents...}
+\item{lowerL}{a numeric value that represents the smallest observed  size.}
 
-\item{upperL}{a numeric value that represents...}
+\item{upperL}{a numeric value that represents the highest observed size.}
 
-\item{classL}{a numeric value ...}
+\item{classL}{a numeric value that represents the range length classes.}
 
-\item{Linf}{a numeric value ....}
+\item{Linf}{a numeric value that represents   the theoretical asymptotic length of an individual \eqn{L_\infty}.}
 
-\item{K}{a numeric value ..}
+\item{k}{a numeric value that represents the growth rate parameter.}
 
-\item{gm}{a numeric value .. \code{gm = 1} as default value??.}
+\item{gm}{a numeric value that represents the incremental relative rate of relative growth rate. Required when "Schnute" method is selected.}
 
-\item{dl}{a numeric value ...  \code{dl = 0.1} as default value??.}
+\item{dl}{a numeric value  represents a constant relative rate of relative growth rate. Required when "Schnute" method is selected.}
 
-\item{method}{a character string defining the growth equation to be used.}
+\item{method}{a character string defining the growth equation to be used. One of "vonB" (default), "Gompertz", "Logistic" or "Schunute".}
 }
 \value{
 A list of class 'Gincrement'.
 
-\code{delta} the mean growth increment
+\code{delta} the mean growth increment.
 
-\code{Laverage} the average length.
+\code{Laverage} he midlength of the length class \eqn{l}.
 }
 \description{
-Estimate mean growth increment, for the individuals in length class I is then the average change in length of individuals initially in length class
+Estimate mean growth increment \eqn{\bar \Delta_l}  for the individuals in length class \eqn{l}.
 }
 \details{
-Estimate mean growth increment
+Estimate mean growth increment.
 }
 \examples{
-output <- mgi(lowerL = 78, upperL = 202, classL = 4, Linf = 197.42, K = 0.1938, method = "vonB")
+output <- mgi(lowerL = 78, upperL = 202, classL = 4, Linf = 197.42, k = 0.1938, method = "vonB")
 
 output
 output$delta

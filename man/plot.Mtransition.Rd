@@ -36,7 +36,7 @@
 Plot method for Mtransition class
 }
 \examples{
-output <- mgi(lowerL = 78, upperL = 202, classL = 4, Linf = 197.42, K = 0.1938, method = "vonB")
+output <- mgi(lowerL = 78, upperL = 202, classL = 4, Linf = 197.42, k = 0.1938, method = "vonB")
 delta <- output$delta
 
 mat <- transitionM(lowerL = 78, upperL = 202, classL = 4, distribution = "gamma", 

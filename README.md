@@ -31,7 +31,7 @@ growth matrix:
 
 ``` r
 output <- mgi(lowerL = 78, upperL = 202, classL = 4, 
-              Linf = 197.42, K = 0.1938, method = "vonB")
+              Linf = 197.42, k = 0.1938, method = "vonB")
 
 output
 #> $delta

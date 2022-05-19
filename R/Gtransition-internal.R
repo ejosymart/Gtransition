@@ -1,15 +1,15 @@
-.growth_vonB <- function(Linf, lc_av, K){
+.growth_vonB <- function(Linf, lc_av, k){
   
-  d <- (Linf - lc_av)*(1- exp(-K))
+  d <- (Linf - lc_av)*(1- exp(-k))
   
   d <- sapply(d, function(x) max(x,0))
   
   return(d)
 }
 
-.growth_gompertz <- function(Linf, lc_av, K){
+.growth_gompertz <- function(Linf, lc_av, k){
   
-  d <- (Linf*(lc_av/Linf)^exp(-K))-lc_av
+  d <- (Linf*(lc_av/Linf)^exp(-k))-lc_av
   
   d <- sapply(d, function(x) max(x,0))
   

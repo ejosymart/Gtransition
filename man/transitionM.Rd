@@ -15,35 +15,37 @@ transitionM(
 )
 }
 \arguments{
-\item{lowerL}{a numeric value that represents...}
+\item{lowerL}{a numeric value that represents the smallest observed  size.}
 
-\item{upperL}{a numeric value that represents...}
+\item{upperL}{a numeric value that represents the highest observed size.}
 
-\item{classL}{a numeric value ...}
+\item{classL}{a numeric value that represents the range length classes.}
 
-\item{distribution}{a character string defining the growth equation to be used.}
+\item{distribution}{a character string defining the growth equation to be used. One of "gamma" or "normal".}
 
-\item{delta}{a numeric vector...}
+\item{delta}{a numeric vector that represents mean growth increments \eqn{\bar \Delta_l}. The output of function mgi().}
 
-\item{beta}{a numeric value...}
+\item{beta}{a numeric value that represents  the shape parameter of gamma distribution density function. Required when "gamma" distribution is selected.}
 
-\item{sigma}{a numeric value...}
+\item{sigma}{a numeric value the represents the variability  of normal distribution density function. Required when "normal" distribution is selected.}
 }
 \value{
 A list of class 'Mtransition'.
 
-\code{mcdf} the mean growth increment
+\code{mcdf} a matrix that contain the probabilities  of growth increments.
 
-\code{G} the average length.
+\code{G} a matrix that contain the expected proportion of individuals growing from class \eqn{l} to  length class \eqn{l +1}.
 }
 \description{
-Estimate .....
+Estimates  the probability of each individual growing from one length class to another over a time-step \eqn{G_{l, l+1}} based on two probabilistic density functions: gamma and normal distributions.
 }
 \details{
-Estimate .....
+The probabilistic density function defines the probability region where individuals 
+may grow considering the probability that the increment in length does not occur and the individuals 
+remain in their original length class (Haddon, 2011).
 }
 \examples{
-output <- mgi(lowerL = 78, upperL = 202, classL = 4, Linf = 197.42, K = 0.1938, method = "vonB")
+output <- mgi(lowerL = 78, upperL = 202, classL = 4, Linf = 197.42, k = 0.1938, method = "vonB")
 delta <- output$delta
 
 mat <- transitionM(lowerL = 78, upperL = 202, classL = 4, distribution = "gamma", 
