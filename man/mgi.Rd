@@ -31,7 +31,7 @@ A list of class 'Gincrement'.
 \code{Laverage} he midlength of the length class \eqn{l}.
 }
 \description{
-Estimate mean growth increment \eqn{\bar \Delta_l}  for the individuals in length class \eqn{l}.
+Estimate mean growth increment \eqn{\bar \Delta_l} for the individuals in length class \eqn{l}.
 }
 \details{
 Estimate mean growth increment.

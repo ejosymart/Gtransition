@@ -18,9 +18,22 @@ the proportion of individuals going from one length class to another.
 
 Install the CRAN version:
 
+``` r
+install.packages("Gtransition")
+```
+
 Or install de development version:
 
+``` r
+# install.packages("devtools")
+devtools::install_github("ejosymart/Gtransition")
+```
+
 After, that call the package:
+
+``` r
+library("Gtransition")
+```
 
 ## Examples
 
@@ -72,8 +85,8 @@ plot(Gmat)
 
 Luquin-Covarrubias M., Morales-Bojorquez E. (2020). Effects of
 stochastic growth on population dynamics and management quantities
-estimated from an integrated catch-at-length assessment model: Panopea
-globosa as case study. Ecologial Modeling 440, 109384.
+estimated from an integrated catch-at-length assessment model: *Panopea
+globosa* as case study. Ecologial Modeling 440, 109384.
 <https://doi.org/10.1016/j.ecolmodel.2020.109384>
 
 Sullivan P.J., Lai H., Galluci V.F. (1990). A Catch-at-Length analysis

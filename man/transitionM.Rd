@@ -37,7 +37,7 @@ A list of class 'Mtransition'.
 \code{G} a matrix that contain the expected proportion of individuals growing from class \eqn{l} to  length class \eqn{l +1}.
 }
 \description{
-Estimates  the probability of each individual growing from one length class to another over a time-step \eqn{G_{l, l+1}} based on two probabilistic density functions: gamma and normal distributions.
+Estimates the probability of each individual growing from one length class to another over a time-step \eqn{G_{l, l+1}} based on two probabilistic density functions: gamma and normal distributions.
 }
 \details{
 The probabilistic density function defines the probability region where individuals 

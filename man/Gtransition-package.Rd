@@ -6,7 +6,7 @@
 \alias{Gtransition}
 \title{Estimate a stochastic growth matrix based on length structure data}
 \description{
-Describe a theoretical model expressing the variability observed in the individual growth, such that each individual in the population exhibits a growth pattern with a nonlinear trend toward an expected value.
+Describe a theoretical model expressing the variability observed in the individual growth, such that each individual in the population exhibits a growth pattern with a nonlinear trend toward an expected value. It includes estimation of mean growth increment \eqn{\bar \Delta_l} for the individuals in length class \eqn{l} and the probability of each individual growing from one length class to another over a time-step \eqn{G_{l, l+1}} based on two probabilistic density functions: gamma and normal distributions, and some basic plots.
 }
 \details{
 Package: Gtransition

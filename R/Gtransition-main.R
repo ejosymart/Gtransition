@@ -6,7 +6,7 @@
 #' 
 #' @title Estimate a stochastic growth matrix based on length structure data
 #'
-#' @description Describe a theoretical model expressing the variability observed in the individual growth, such that each individual in the population exhibits a growth pattern with a nonlinear trend toward an expected value.
+#' @description Describe a theoretical model expressing the variability observed in the individual growth, such that each individual in the population exhibits a growth pattern with a nonlinear trend toward an expected value. It includes estimation of mean growth increment \eqn{\bar \Delta_l} for the individuals in length class \eqn{l} and the probability of each individual growing from one length class to another over a time-step \eqn{G_{l, l+1}} based on two probabilistic density functions: gamma and normal distributions, and some basic plots.
 #' @name Gtransition-package
 #' @aliases Gtransition-package Gtransition
 #' @docType package
@@ -144,7 +144,7 @@
 NULL
 #' Mean growth increment
 #'
-#' Estimate mean growth increment \eqn{\bar \Delta_l}  for the individuals in length class \eqn{l}.
+#' Estimate mean growth increment \eqn{\bar \Delta_l} for the individuals in length class \eqn{l}.
 #' @param lowerL a numeric value that represents the smallest observed  size.
 #' @param upperL a numeric value that represents the highest observed size.
 #' @param classL  a numeric value that represents the range length classes.
@@ -202,7 +202,7 @@ mgi <- function(lowerL, upperL, classL, Linf, k, gm = 1, dl = 0.1, method = "von
 
 #' Transition Matrix
 #'
-#' Estimates  the probability of each individual growing from one length class to another over a time-step \eqn{G_{l, l+1}} based on two probabilistic density functions: gamma and normal distributions.
+#' Estimates the probability of each individual growing from one length class to another over a time-step \eqn{G_{l, l+1}} based on two probabilistic density functions: gamma and normal distributions.
 #' @param lowerL a numeric value that represents the smallest observed  size.
 #' @param upperL a numeric value that represents the highest observed size.
 #' @param classL a numeric value that represents the range length classes.
