@@ -291,7 +291,7 @@ transitionM <- function(lowerL, upperL, classL, distribution = "gamma",
 #' plot(mat)
 #' @export
 #' @method plot Mtransition
-plot.Mtransition <- function(x, xlab = "X-Text", ylab = "Y-Text", col = "grey45", 
+plot.Mtransition <- function(x, xlab = "Length class", ylab = "Y-Text", col = "grey45", 
                              sizeAxis1 = 0.85, sizeAxis2 = 0.5, adjY = -15.5, ...){
   
   if (!inherits(x, "Mtransition"))
