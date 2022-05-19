@@ -2,12 +2,12 @@ Package: Gtransition
 Type: Package
 Title: Estimate a Stochastic Growth Matrix Based on Length Structure Data
 Version: 1.0.0
-Date: 2022-05-15
+Date: 2022-05-19
 Authors@R: c(person("Arelly", "Ornelas-Vargas", email = "aornelasv@ipn.mx", role = c("aut")), person("Josymar", "Torrejon-Magallanes", email = "ejosymart@gmail.com", role = c("aut", "cre")), person("Marlene", "Luquin-Covarrubias", role = "aut"))
 Maintainer: Josymar Torrejon-Magallanes <ejosymart@gmail.com>
 Description: Describe a theoretical model expressing the variability observed in the individual growth, such that each individual in the population exhibits a growth pattern with a nonlinear trend toward an expected value. It includes estimation of mean growth increment for the individuals in length class l and the probability of each individual growing from one length class to another over a time-step based on two probabilistic density functions: gamma and normal distributions, also provides some basic plots.
 Depends: R (>= 4.0)
-Imports: grDevices, stats, utils, kableExtra
+Imports: stats, utils, graphics
 Suggests: 
     rmarkdown,
     knitr
