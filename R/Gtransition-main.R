@@ -30,10 +30,10 @@
 #' 
 #' Individual growth was modeled by using a growth matrix (\eqn{G_{l, l+1}}) which is expressed through a stochastic growth model 
 #' that defines the probability of each individual growing from one length class to another over a time-step.
-#' Mathematically \eqn{G_{l, l+1}} matriz requires estimation of mean growth increments \eqn{\delta_{l}}, which assume length 
+#' Mathematically \eqn{G_{l, l+1}} matrix requires estimation of mean growth increments \eqn{\delta_{l}}, which assume length 
 #' variability from individual to individual estimated by \eqn{\delta_{l} = l_{t+1} - l_{t}}, where \eqn{l_{t+1}} is the length 
 #' of the individual at time \eqn{t + 1}, and \eqn{l_{t}} is the length of the individual at time \eqn{t}.
-#' In this way, The expected mean growth increments were estimated by applying four stochastic growth models.
+#' In this way, the expected mean growth increments were estimated by applying four stochastic growth models.
 #' 
 #' \enumerate{
 #' \item von Bertalanfy stochastic growth model (VBS):
