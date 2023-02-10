@@ -65,8 +65,18 @@ Gmat <- transitionM(lowerL = 78, upperL = 202, classL = 4,
 ```
 
 
+# Plots
 ```{r}
 plot(Gmat)
+```
+
+
+```{r}
+plot(Gmat, xlab = "XLAB", ylab = "YLAB", adjY = -25,
+     col = "grey40", sizeAxis1 = 0.5, sizeAxis2 = 0.5,
+     filename = "myplot", 
+     savePDF = TRUE, widthPDF = 3, heightPDF = 10, 
+     savePNG = TRUE, widthPNG = 300, heightPNG = 1000, resPNG = 110)
 ```
 
 

@@ -6,17 +6,28 @@
 \usage{
 \method{plot}{Mtransition}(
   x,
+  units = "mm.",
   xlab = "Length class",
   ylab = "Y-Text",
   col = "grey45",
-  sizeAxis1 = 0.85,
+  sizeAxis1 = 0.5,
   sizeAxis2 = 0.5,
-  adjY = -15.5,
+  adjY = -20,
+  filename = "myplot",
+  savePDF = FALSE,
+  widthPDF = 3,
+  heightPDF = 10,
+  savePNG = FALSE,
+  widthPNG = 300,
+  heightPNG = 1000,
+  resPNG = 110,
   ...
 )
 }
 \arguments{
 \item{x}{object of class 'Mtransition'.}
+
+\item{units}{a character string related to the measure of length.}
 
 \item{xlab}{a title for the x axis.}
 
@@ -28,7 +39,23 @@
 
 \item{sizeAxis2}{a number for the axis Y.}
 
-\item{adjY}{a number for y label position}
+\item{adjY}{a number for y label position .}
+
+\item{filename}{filename.}
+
+\item{savePDF}{to save or not the plot in pdf format.}
+
+\item{widthPDF}{width resolution for pdf format.}
+
+\item{heightPDF}{height resolution for pdf format.}
+
+\item{savePNG}{to save or not the plot in png format.}
+
+\item{widthPNG}{width resolution for png format.}
+
+\item{heightPNG}{height resolution for png format.}
+
+\item{resPNG}{png resolution for png format.}
 
 \item{\dots}{Additional arguments to the plot method.}
 }

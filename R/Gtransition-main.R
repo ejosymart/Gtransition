@@ -274,12 +274,21 @@ transitionM <- function(lowerL, upperL, classL, distribution = "gamma",
 #' Plot method for Mtransition class
 #'
 #' @param x object of class 'Mtransition'.
+#' @param units a character string related to the measure of length.
 #' @param xlab a title for the x axis.
 #' @param ylab a title for the y axis.
+#' @param col color for the barplot.
 #' @param sizeAxis1 a number for the axis X.
 #' @param sizeAxis2 a number for the axis Y.
-#' @param adjY a number for y label position 
-#' @param col color for the barplot.
+#' @param adjY a number for y label position .
+#' @param filename filename.
+#' @param savePDF to save or not the plot in pdf format.
+#' @param widthPDF width resolution for pdf format.
+#' @param heightPDF height resolution for pdf format.
+#' @param savePNG to save or not the plot in png format.
+#' @param widthPNG width resolution for png format.
+#' @param heightPNG height resolution for png format.
+#' @param resPNG png resolution for png format.
 #' @param \dots Additional arguments to the plot method.
 #' @examples
 #' output <- mgi(lowerL = 78, upperL = 202, classL = 4, Linf = 197.42, k = 0.1938, method = "vonB")
@@ -291,10 +300,13 @@ transitionM <- function(lowerL, upperL, classL, distribution = "gamma",
 #' plot(mat)
 #' @export
 #' @method plot Mtransition
-plot.Mtransition <- function(x, xlab = "Length class", ylab = "Y-Text", col = "grey45", 
-                             sizeAxis1 = 0.85, sizeAxis2 = 0.5, adjY = -15.5, ...){
+plot.Mtransition <- function(x, units = "mm.", xlab = "Length class", ylab = "Y-Text", col = "grey45", 
+                             sizeAxis1 = 0.5, sizeAxis2 = 0.5, adjY = -20, 
+                             filename = "myplot", 
+                             savePDF = TRUE, widthPDF = 3, heightPDF = 10, 
+                             savePNG = TRUE, widthPNG = 300, heightPNG = 1000, resPNG = 110, ..){
   
-  if (!inherits(x, "Mtransition"))
+  if(!inherits(x, "Mtransition"))
     stop("Use only with 'Mtransition' objects")
   
   data     <- x
@@ -302,12 +314,13 @@ plot.Mtransition <- function(x, xlab = "Length class", ylab = "Y-Text", col = "g
   oldpar <- par(no.readonly = TRUE)
   on.exit(par(oldpar))
   par(mfrow = c(ncol(data), 1), 
-      mai   = c(0.05, 0.4, 0.05, 0.2), 
-      oma   = c(4, 3, 0, 4)) 
+      mai   = c(0.025, 0.4, 0.025, 0.2), 
+      oma   = c(4, 1.5, 0, 4)) 
   
+  position <- barplot(data[,1], space = 0, plot = FALSE)
   for(i in rev(seq_len(ncol(data)))){
-    barplot(data[,i], names.arg = rownames(data), 
-            ylim = c(0, 1.1*max(data)), 
+    barplot(data[,i],
+            ylim = c(0, 1.05*max(data)), 
             las = 1, 
             space = 0, 
             border = NA, 
@@ -315,14 +328,24 @@ plot.Mtransition <- function(x, xlab = "Length class", ylab = "Y-Text", col = "g
             xaxt = "n", 
             yaxt = "n")
     box()
-    axis(side = 2, at = c(0, 0.5), las = 2, cex.axis = sizeAxis2)
+    axis(side = 2, at = c(0, 0.5, 1), las = 2, cex.axis = sizeAxis2)
+    axis(side = 4, at = 0.5, lab = paste(names(Gmat[,1])[i], units), 
+         las = 2, tick = FALSE, cex.axis = 0.75)
   }
-  axis(side = 1, at = seq_along(rownames(data)), 
+  axis(side = 1, at = position, 
        labels = rownames(data), las = 2, 
        cex.axis = sizeAxis1)
   mtext(text = xlab, side = 1, line = 2.75)
   mtext(text = ylab, side = 2, line = 2.75, adj = adjY)
   
+  if(isTRUE(savePDF)){
+    dev.copy2pdf(file = paste0(filename, ".pdf"), width = widthPDF, height = heightPDF)
+  }
   
+  if(isTRUE(savePNG)){
+    dev.copy(png, filename = paste0(filename, ".png"), width = widthPNG, height = heightPNG, res = resPNG)
+    dev.off()
+  }
+    
   return(invisible(NULL))
 }

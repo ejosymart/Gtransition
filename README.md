@@ -5,14 +5,14 @@ This package describes a theoretical model expressing the variability
 observed in the individual growth, such that each individual in the
 population exhibits a growth pattern with a nonlinear trend toward an
 expected value. Thus, the growth is represented by the proportion of
-individuals in the length class *l* during a time interval. The
-proportion of individuals that grow from length class *l* to all length
-classes *l*<sup>′</sup> is represented by a probabilistic density
-function, usually gamma distribution or normal distribution; therefore
-the growth pattern depends of their parameters, where the mean value
-indicates the average growth increment, and the variance explains the
-individual variability in growth, consequently both parameters determine
-the proportion of individuals going from one length class to another.
+individuals in the length class $l$ during a time interval. The
+proportion of individuals that grow from length class $l$ to all length
+classes $l^{'}$ is represented by a probabilistic density function,
+usually gamma distribution or normal distribution; therefore the growth
+pattern depends of their parameters, where the mean value indicates the
+average growth increment, and the variance explains the individual
+variability in growth, consequently both parameters determine the
+proportion of individuals going from one length class to another.
 
 ## Installation
 
@@ -73,13 +73,23 @@ Gmat <- transitionM(lowerL = 78, upperL = 202, classL = 4,
                    delta = delta, beta = 0.105, sigma = NULL)
 ```
 
-## Transition growth matrix
+# Plots
 
 ``` r
 plot(Gmat)
 ```
 
 ![](README-unnamed-chunk-4-1.png)<!-- -->
+
+``` r
+plot(Gmat, xlab = "XLAB", ylab = "YLAB", adjY = -25,
+     col = "grey40", sizeAxis1 = 0.5, sizeAxis2 = 0.5,
+     filename = "myplot", 
+     savePDF = TRUE, widthPDF = 3, heightPDF = 10, 
+     savePNG = TRUE, widthPNG = 300, heightPNG = 1000, resPNG = 110)
+```
+
+![](README-unnamed-chunk-5-1.png)<!-- -->
 
 ### References
 
