@@ -3,6 +3,7 @@
 #' @importFrom stats pnorm pgamma
 #' @importFrom utils installed.packages
 #' @importFrom graphics axis barplot box mtext par
+#' @importFrom grDevices dev.copy2pdf dev.copy png dev.off
 #' 
 #' @title Estimate a stochastic growth matrix based on length structure data
 #'
@@ -303,8 +304,8 @@ transitionM <- function(lowerL, upperL, classL, distribution = "gamma",
 plot.Mtransition <- function(x, units = "mm.", xlab = "Length class", ylab = "Y-Text", col = "grey45", 
                              sizeAxis1 = 0.5, sizeAxis2 = 0.5, adjY = -20, 
                              filename = "myplot", 
-                             savePDF = TRUE, widthPDF = 3, heightPDF = 10, 
-                             savePNG = TRUE, widthPNG = 300, heightPNG = 1000, resPNG = 110, ..){
+                             savePDF = FALSE, widthPDF = 3, heightPDF = 10, 
+                             savePNG = FALSE, widthPNG = 300, heightPNG = 1000, resPNG = 110, ...){
   
   if(!inherits(x, "Mtransition"))
     stop("Use only with 'Mtransition' objects")
@@ -329,7 +330,7 @@ plot.Mtransition <- function(x, units = "mm.", xlab = "Length class", ylab = "Y-
             yaxt = "n")
     box()
     axis(side = 2, at = c(0, 0.5, 1), las = 2, cex.axis = sizeAxis2)
-    axis(side = 4, at = 0.5, lab = paste(names(Gmat[,1])[i], units), 
+    axis(side = 4, at = 0.5, labels = paste(names(data[,1])[i], units), 
          las = 2, tick = FALSE, cex.axis = 0.75)
   }
   axis(side = 1, at = position, 
